@@ -1,4 +1,4 @@
-# DEND_CAPSTONE
+# DEND_CAPSTONE - Serverless ETL pipeline
 Capstone project for the Data Engineer NanoDegree program
 
 Purpose of this project is to build an ETL pipeline for a data that is regulary dispatched to the S3 bucket. 
@@ -44,4 +44,13 @@ The goal of this project is to build ETL pipeline together with set of tables fo
 In order to asnwer business need we are proposing following architecture that is based on AWS stack:
 
 ![alt text](https://github.com/matpl2/DEND_CAPSTONE/blob/main/pictures/pict.jpg)
+
+Due to the fact that we do not know exactly schedule of file upload by vendor the idea is to utilize Lambda function that will be triggered by S3 upload trigger. This function will execute following steps:
+1. Truncate exising flights table
+2. Upload new data to the flighs table
+3. Commit whole operation
+
+This function will be triggered anytime when file is sent. Additionally, as we want to provide prepared dataset for the analytics team we will create flights_reporting view. Benefit of this solution is that view does not need to have refresh ETL pipeline as it will pull most recent data as soon as source tables are changed. This logic is presented below:
+
+
 
