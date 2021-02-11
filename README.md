@@ -43,5 +43,5 @@ The goal of this project is to build ETL pipeline together with set of tables fo
 ## Architecture
 In order to asnwer business need we are proposing following architecture that is based on AWS stack:
 
-
+![alt text](https://github.com/matpl2/DEND_CAPSTONE/blob/main/pictures/pict.jpg)
 
