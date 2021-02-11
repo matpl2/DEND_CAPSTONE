@@ -52,5 +52,6 @@ Due to the fact that we do not know exactly schedule of file upload by vendor th
 
 This function will be triggered anytime when file is sent. Additionally, as we want to provide prepared dataset for the analytics team we will create flights_reporting view. Benefit of this solution is that view does not need to have refresh ETL pipeline as it will pull most recent data as soon as source tables are changed. This logic is presented below:
 
+![alt text](https://github.com/matpl2/DEND_CAPSTONE/blob/main/pictures/inline.jpg)
 
 
