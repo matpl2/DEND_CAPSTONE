@@ -24,9 +24,21 @@ For the purpose of this excercise orginal file airlines.csv was change dto json 
 
 
 airlines.json
+
 The first dataset is a short list that translates IATA air line code to the user friendly name.
 
 airports.csv
+
 The second dataset consists list of airports in the USA and allows to translate IATA airport code to the user friendly name. It also consist geolocation data of the airport such as longitude, latitude, state, and city.
 
 flights example.csv
+This dataset includes data about flights. A lot of details is provided for each domestic flight in the USA.
+
+
+## Project scope
+
+
+## Architecture
+
+
+
