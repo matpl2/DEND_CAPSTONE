@@ -1,7 +1,7 @@
 # DEND_CAPSTONE
 Capstone project for the Data Engineer NanoDegree program
 
-Purpose of this project is to build an ETL pipeline for a data lake hosted on S3. 
+Purpose of this project is to build an ETL pipeline for a data that is regulary dispatched to the S3 bucket. 
 
 
 ## Files
