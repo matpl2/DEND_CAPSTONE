@@ -54,6 +54,12 @@ This function will be triggered anytime when file is sent. Additionally, as we w
 
 ![alt text](https://github.com/matpl2/DEND_CAPSTONE/blob/main/pictures/inline.jpg)
 
+## Redshift cluster creation
+For the purpose of this project it is necessary to create Redshift database. Database creadentials, and server paths should be stored in dwh.cfg file. For my work I have created 2 nodes Redshift instance that run in defalut VPC. In such config it was necessary to configure VPC components to get access to Redshift(editing Security group for public access, attaching subnets to IGW).
+Redshift instance used in this excercise:
+
+ADD PICT
+
 
 ## Tables / Views
 Using the song and event datasets, I have created a star schema optimized for queries on song play analysis. This includes the following tables.
