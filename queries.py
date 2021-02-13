@@ -101,7 +101,18 @@ table_airlines_copy = ("""
     config['S3']['DATAAIRL'],
     config['IAM_ROLE']['ARN'],
     config['CLUSTER']['REGION']
-
+    
+table_airports_copy = ("""
+    COPY {} FROM {}
+    IAM_ROLE '{}'
+    delimiter ','
+    IGNOREHEADER 1
+    region '{}';
+""").format(
+    'data.airports',
+    config['S3']['DATAAIRLP'],
+    config['IAM_ROLE']['ARN'],
+    config['CLUSTER']['REGION']
 
 
 # TRUNCATE TABLE
