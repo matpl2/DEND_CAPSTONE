@@ -15,15 +15,15 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ## Data sets
 Dataset used in this project is stored in data/set1 folder. This dataset includes 3 files:
 
-- airlines.json
+- airlines.txt
 - airports.csv
 - flights example.csv
 
 The orginal datasets comes from: https://www.kaggle.com/usdot/flight-delays
-For the purpose of this excercise orginal file airlines.csv was change dto json format. Also, the respository includes only flights sample data due to the limitation of github. Orginal file should be downloaded from the link above.
+For the purpose of this excercise orginal file airlines.csv was change dto txt format. Also, the respository includes only flights sample data due to the limitation of github. Orginal file should be downloaded from the link above.
 
 
-airlines.json
+airlines.txt
 
 The first dataset is a short list that translates IATA air line code to the user friendly name.
 
@@ -94,3 +94,5 @@ In order to create this pipeline following steps were taken:
 4. Creation of lambda function that will execure script from point 3
 5. Creation of views
 
+
+## Data Analysis
