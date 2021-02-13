@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  myfunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.6
+      CodeUri: .
+      Description: ''
+      MemorySize: 300
+      Timeout: 300
+      Role: 'arn:aws:iam::066263366843:role/service-role/lambda_role'
+      Events:
+        BucketEvent1:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: Bucket1
+            Events:
+              - 's3:ObjectCreated:*'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-07188170c167ecb19
+        SubnetIds:
+          - subnet-0489185531987b377
+  Bucket1:
+    Type: 'AWS::S3::Bucket'
