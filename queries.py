@@ -116,18 +116,24 @@ table_airports_copy = ("""
 
 
 # TRUNCATE TABLE
-table_flights_truncate = ("""
+table_flights_truncate = (""
     TRUNCATE data.flights;
-""")
+"")
+
+table_airports_truncate = (""
+    TRUNCATE data.airports;
+"")
+    
+table_airports_truncate = (""
+    TRUNCATE data.airplines;
+"")
 
 
 # QUERY LISTS
 
+queries_start = [create_schema_data, create_schema_wbr]
 queries_flight = [table_fligths_create, table_flights_truncate, table_flights_copy]
+queries_airlines = [table_fligths_create, table_flights_truncate, table_flights_copy]
 
-table_airlines_drop
-table_airports_drop
-table_airlines_create 
-
-table_airlines_create 
-table_airports_create
+create_schema_data = ("""CREATE SCHEMA data;""")
+create_schema_wbr
