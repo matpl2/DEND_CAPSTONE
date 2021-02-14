@@ -88,21 +88,9 @@ In this project we will create 3 tables (orginal source of data) and 2 views (op
 
 
 ### Views
-1. airlines - orginal source of the airlines data. Primary key was used on the IATA_CODE as this code is unique to the airline. Table is small and it will participate in joins therefore distribution style ALL was used.
+1. flights_details - detailed dataset that includes each flight details. Optimization was implementing by putting flight date to the date format. Airports details were brought from airports dataset. Airports and Airlines are avialable in the descriptive form (not the code only).
 
-
-
-
-
-
-
-    
-
-This star schema would be the most optimal for the analytics team. Also, because orginal dataset is in S3 the most efficient way for ETL process was to use Spark on EMR to transofrm data.
-
+2. delayed_fligths_agg - aggregated dataset that includes only flights delayed at arrival. View provides aggregated measures like (delays, flights counts).
 
 
 ## Lambda function
-
-
-## Data Analysis
