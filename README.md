@@ -96,4 +96,10 @@ In this project we will create 3 tables (orginal source of data) and 2 views (op
 ## Lambda function
 Lambda function is set-up for the flights dataset. As this dataset changes often we want to ensure it is updated properly in our table. Lambda is triggered by the S3 bucket upload event any time we get new data. Set-up of lambda function should look like this:
 
-![alt text](https://github.com/matpl2/DEND_CAPSTONE/blob/main/pictures/Redshift.png)
+![alt text](https://github.com/matpl2/DEND_CAPSTONE/blob/main/pictures/Lambda%20function.png)
+
+Source bucket should not allow for upload of other files. 
+
+Important note: As lambda does not have psycopg module I used customized for lambda version from: https://github.com/jkehler/awslambda-psycopg2. Python 3.6 version of this psycopg is includes in lambda function (both zip and yaml).
+
+
