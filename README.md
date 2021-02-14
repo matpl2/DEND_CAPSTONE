@@ -80,24 +80,19 @@ Redshift instance used in this excercise:
 In this project we will create 3 tables (orginal source of data) and 2 views (optimized datasets) for the analytical team.
 
 ### Tables
-1. airlines - orginal source of the airlines data. Primary key was used on the IATA_CODE as this code is unique to airline. Table is small and it will participate in joins therefore distribution style ALL was used.
+1. airlines - orginal source of the airlines data. Primary key was used on the IATA_CODE as this code is unique to the airline. Table is small and it will participate in joins therefore distribution style ALL was used.
 
-2.airports - orginal source of the airports data.
+2. airports - orginal source of the airports data. Primary key was used on the IATA_CODE as this code is unique to the airport. Table is small and it will participate in joins therefore distribution style ALL was used.
+
+3. fligths - orginal source of the flights data. Huge table with 5819079 rows. This table includes core information. We expect analytics team to do dashobards for each airline (heavy filtering on airline) thus sorkkey is put on airline. Distribution style is Even as other tables we will be joining with this dataset are distributed with ALL.
 
 
-Views
+### Views
+1. airlines - orginal source of the airlines data. Primary key was used on the IATA_CODE as this code is unique to the airline. Table is small and it will participate in joins therefore distribution style ALL was used.
 
 
-CREATE TABLE IF NOT EXISTS 
 
-data.airlines
-(
-IATA_CODE	VARCHAR (4)
-, AIRLINE VARCHAR (144)
-,primary key(IATA_CODE)
-)
 
-DISTSTYLE ALL
 
 
 
