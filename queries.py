@@ -308,3 +308,4 @@ queries_airlines = [table_fligths_create, table_flights_truncate, table_flights_
 queries_airports = [table_airports_create, table_airports_truncate, table_airports_copy]
 views_creation = [flights_details_view,flights_delayed_agg_view]  
 quality_check_steps =[quality_check]
+schemas_creation = [create_schema_data, create_schema_wbr]
