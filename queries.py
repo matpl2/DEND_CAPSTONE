@@ -131,6 +131,57 @@ table_airports_truncate = (""
     
 # CREATING VIEWS 
 
+flights_details_view = ("""
+    CREATE VIEW wbr.flights_details AS
+    (
+        SELECT
+        DISTINCT TO_DATE(fl.day || '-' || fl.month || '-' || fl.year,'dd-mm-yyyy') as flight_date,
+        fl.day_of_week as flight_day_of_week_num,
+        CASE
+            WHEN fl.day_of_week = '1' THEN 'MON'
+            WHEN fl.day_of_week = '2' THEN 'TUE'
+            WHEN fl.day_of_week = '3' THEN 'WED'
+            WHEN fl.day_of_week = '4' THEN 'THU'
+            WHEN fl.day_of_week = '5' THEN 'FRI'
+            WHEN fl.day_of_week = '6' THEN 'SAT'
+            WHEN fl.day_of_week = '7' THEN 'SUN'
+       END as flight_day_of_week,
+       fl.flight_number,
+       fl.tail_number,
+       fl.airline as airline_iata_code,
+       al.airline as airline_name,
+       fl.origin_airport as origin_airport_iata,
+       ap1.airport as origin_airport,
+       ap1.city as orgin_airport_city,
+       ap1.state as orgin_airport_state,
+       ap1.country as orgin_airport_country,
+       ap1.latitude as orgin_airport_latitude,
+       ap1.longitude as orgin_airport_longitude,
+       fl.destination_airport as destination_airport_iata,
+       ap2.airport as destination_airport,
+       ap2.city as destination_airport_city,
+       ap2.state as destination_airport_state,
+       ap2.country as destination_airport_country,
+       ap2.latitude as destination_airport_latitude,
+       ap2.longitude as destination_airport_longitude,
+       fl.diverted,
+       fl.air_time,
+       fl.distance,
+       fl.cancelled,
+       fl.cancellation_reason,
+       fl.departure_delay,
+       fl.arrival_delay,
+       fl.air_system_delay,
+       fl.security_delay,
+       fl.airline_delay,
+       fl.late_aircraft_delay,
+       fl.weather_delay
+       
+       FROM  data.flights fl
+       LEFT JOIN data.airlines al ON fl.airline = al.iata_code
+       LEFT JOIN data.airports ap1 ON fl.origin_airport = ap1.iata_code
+       LEFT JOIN data.airports ap2 ON fl.destination_airport = ap2.iata_code
+)
 
     
     
