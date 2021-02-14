@@ -73,7 +73,7 @@ This function will be triggered anytime when file is sent. Additionally, as we w
 For the purpose of this project it is necessary to create Redshift database. Database creadentials, and server paths should be stored in dwh.cfg file. For my work I have created 2 nodes Redshift instance that run in defalut VPC. In such config it was necessary to configure VPC components to get access to Redshift(editing Security group for public access, attaching subnets to IGW).
 Redshift instance used in this excercise:
 
-ADD PICT
+![alt text](https://github.com/matpl2/DEND_CAPSTONE/blob/main/pictures/Redshift.png)
 
 
 ## Tables / Views
