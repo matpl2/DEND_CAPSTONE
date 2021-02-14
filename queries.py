@@ -183,7 +183,99 @@ flights_details_view = ("""
        LEFT JOIN data.airports ap2 ON fl.destination_airport = ap2.iata_code
 )
 
+flights_delayed_agg_view = ("""
+    CREATE VIEW wbr.delayed_fligths_agg  AS
+    (
+        SELECT
+        DISTINCT TO_DATE(fl.day || '-' || fl.month || '-' || fl.year,'dd-mm-yyyy') as flight_date,
+        fl.day_of_week as flight_day_of_week_num,
+        CASE
+            WHEN fl.day_of_week = '1' THEN 'MON'
+            WHEN fl.day_of_week = '2' THEN 'TUE'
+            WHEN fl.day_of_week = '3' THEN 'WED'
+            WHEN fl.day_of_week = '4' THEN 'THU'
+            WHEN fl.day_of_week = '5' THEN 'FRI'
+            WHEN fl.day_of_week = '6' THEN 'SAT'
+            WHEN fl.day_of_week = '7' THEN 'SUN'
+        END as flight_day_of_week,
+        fl.airline as airline_iata_code,
+        al.airline as airline_name,
+        fl.origin_airport as origin_airport_iata,
+        ap1.airport as origin_airport,
+        ap1.city as orgin_airport_city,
+        ap1.state as orgin_airport_state,
+        ap1.country as orgin_airport_country,
+        ap1.latitude as orgin_airport_latitude,
+        ap1.longitude as orgin_airport_longitude,
+        fl.destination_airport as destination_airport_iata,
+        ap2.airport as destination_airport,
+        ap2.city as destination_airport_city,
+        ap2.state as destination_airport_state,
+        ap2.country as destination_airport_country,
+  ap2.latitude as destination_airport_latitude,
+  ap2.longitude as destination_airport_longitude,
+  fl.diverted,
+  COUNT(fl.flight_number) as total_flights,
+  SUM(fl.air_time) as total_air_time,
+  AVG(fl.air_time) as avg_air_time,
+  SUM(fl.distance) as total_distance,
+  AVG(fl.distance) as avg_distance,
+  SUM(fl.arrival_delay) as total_arriv_delay,
+  AVG(fl.arrival_delay) as avg_arriv_delay,
+  SUM(fl.air_system_delay) as total_air_system_delay,
+  AVG(fl.air_system_delay) as avg_air_system_delay,
+  SUM(fl.security_delay) as total_security_delay,
+  AVG(fl.security_delay) as avg_security_delay,
+  SUM(fl.airline_delay) as total_airline_delay,
+  AVG(fl.airline_delay) as avg_airline_delay,
+  SUM(fl.late_aircraft_delay) as total_late_aircraft_delay,
+  AVG(fl.late_aircraft_delay) as avg_late_aircraft_delay,
+  SUM(fl.weather_delay) as total_weather_delay,
+  AVG(fl.weather_delay) as avg_weather_delay
     
+FROM
+  data.flights fl
+  LEFT JOIN data.airlines al ON fl.airline = al.iata_code
+  LEFT JOIN data.airports ap1 ON fl.origin_airport = ap1.iata_code
+  LEFT JOIN data.airports ap2 ON fl.destination_airport = ap2.iata_code
+  
+WHERE 
+1=1
+AND cancelled = 0
+AND NVL(arrival_delay,0) > 0
+
+GROUP BY
+
+ TO_DATE(fl.day || '-' || fl.month || '-' || fl.year,'dd-mm-yyyy'),
+  fl.day_of_week,
+  CASE
+    WHEN fl.day_of_week = '1' THEN 'MON'
+    WHEN fl.day_of_week = '2' THEN 'TUE'
+    WHEN fl.day_of_week = '3' THEN 'WED'
+    WHEN fl.day_of_week = '4' THEN 'THU'
+    WHEN fl.day_of_week = '5' THEN 'FRI'
+    WHEN fl.day_of_week = '6' THEN 'SAT'
+    WHEN fl.day_of_week = '7' THEN 'SUN'
+  END,
+  fl.airline,
+  al.airline,
+  fl.origin_airport,
+  ap1.airport,
+  ap1.city,
+  ap1.state,
+  ap1.country,
+  ap1.latitude,
+  ap1.longitude,
+  fl.destination_airport,
+  ap2.airport,
+  ap2.city,
+  ap2.state,
+  ap2.country,
+  ap2.latitude,
+  ap2.longitude,
+  fl.diverted
+ )
+
     
 # QUERY LISTS
 
