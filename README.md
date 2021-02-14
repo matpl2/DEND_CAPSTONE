@@ -48,7 +48,7 @@ The second dataset consists list of airports in the USA and allows to translate 
 
 flights example.csv
 
-This dataset includes data about flights. A lot of details is provided for each domestic flight in the USA.
+This dataset includes data about flights. A lot of details is provided for each domestic flights in the USA.
 
 
 ## Project scope
@@ -94,3 +94,6 @@ In this project we will create 3 tables (orginal source of data) and 2 views (op
 
 
 ## Lambda function
+Lambda function is set-up for the flights dataset. As this dataset changes often we want to ensure it is updated properly in our table. Lambda is triggered by the S3 bucket upload event any time we get new data. Set-up of lambda function should look like this:
+
+![alt text](https://github.com/matpl2/DEND_CAPSTONE/blob/main/pictures/Redshift.png)
