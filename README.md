@@ -20,7 +20,6 @@ This project includes following files:
 - my_function-37febacc-743b-42ff-9d81-65d9cb6c7c42.zip; lambda function that loads flights table in the zip format
 
 
-views.py
 
 ## Datasets
 Dataset used in this project is stored in data/set1 folder. This dataset includes 3 files:
