@@ -274,7 +274,7 @@ flights_delayed_agg_view = ("""
         ap2.longitude,
         fl.diverted
  )
-"")
+""")
 
     
 # QUALITY CHECK
