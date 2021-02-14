@@ -279,7 +279,26 @@ flights_delayed_agg_view = ("""
     
 # QUALITY CHECK
 
-
+    
+quality_check = ("""
+    SELECT 'Number of rows in the flights table' as control_measure
+    COUNT(*) as value
+    
+    FROM data.flights
+    
+    UNION
+    (
+    SELECT 'Number of rows in the airports table' as control_measure
+    ,COUNT(*) as value
+    FROM data.airports
+    
+    UNION
+    
+    SELECT 'Number of rows in the airkines table' as control_measure
+    ,COUNT(*) as value
+    FROM data.airlines
+    )
+ """)
     
 # QUERY LISTS
 
@@ -288,4 +307,4 @@ queries_flight = [table_fligths_create, table_flights_truncate, table_flights_co
 queries_airlines = [table_fligths_create, table_flights_truncate, table_flights_copy]
 queries_airports = [table_airports_create, table_airports_truncate, table_airports_copy]
 views_creation = [flights_details_view,flights_delayed_agg_view]  
-
+quality_check_steps =[quality_check]
