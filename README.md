@@ -7,13 +7,20 @@ Purpose of this project is to build an ETL pipeline for a data that is regulary 
 ## Files
 This project includes following files:
 - Data floder with datasets described below
-- pictures floder with pictures respository
+- Pictures folder with pictures respository
 - License; licence used for this project
+- Readme; this readme doc
+- dwh.cfg; configuration file for Redshift and S3
+- queries.py; SQL queries used for this project
+- create_schemas.py; file that can create schema
+- tables_create_copy.py; file that can create tables and load data via COPY command
+- views.py; file that can create views
+- file that can execute queries to check if load process delivered data to tables
+- my_function.yaml; lambda function that loads flights table in the yaml format
+- my_function-37febacc-743b-42ff-9d81-65d9cb6c7c42.zip; lambda function that loads flights table in the zip format
 
 
- 
-
-
+views.py
 
 ## Datasets
 Dataset used in this project is stored in data/set1 folder. This dataset includes 3 files:
