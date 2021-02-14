@@ -182,7 +182,7 @@ flights_details_view = ("""
        LEFT JOIN data.airports ap1 ON fl.origin_airport = ap1.iata_code
        LEFT JOIN data.airports ap2 ON fl.destination_airport = ap2.iata_code
 )
-"")
+""")
 
 flights_delayed_agg_view = ("""
     CREATE VIEW wbr.delayed_fligths_agg  AS
@@ -275,6 +275,11 @@ flights_delayed_agg_view = ("""
         fl.diverted
  )
 "")
+
+    
+# QUALITY CHECK
+
+
     
 # QUERY LISTS
 
