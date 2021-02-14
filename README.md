@@ -79,12 +79,27 @@ Redshift instance used in this excercise:
 ## Tables / Views
 In this project we will create 3 tables (orginal source of data) and 2 views (optimized datasets) for the analytical team.
 
-Tables
-1. songplays - records in event data associated with song plays i.e. records with page NextSong
-   * songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent
+### Tables
+1. airlines - orginal source of the airlines data. Primary key was used on the IATA_CODE as this code is unique to airline. Table is small and it will participate in joins therefore distribution style ALL was used.
+
+2.airports - orginal source of the airports data.
+
 
 Views
-1. songplays - records in eve
+
+
+CREATE TABLE IF NOT EXISTS 
+
+data.airlines
+(
+IATA_CODE	VARCHAR (4)
+, AIRLINE VARCHAR (144)
+,primary key(IATA_CODE)
+)
+
+DISTSTYLE ALL
+
+
 
     
 
