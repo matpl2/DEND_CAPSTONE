@@ -102,4 +102,17 @@ Source bucket should not allow for upload of other files.
 
 Important note: As lambda does not have psycopg module I used customized for lambda version from: https://github.com/jkehler/awslambda-psycopg2. Python 3.6 version of this psycopg is includes in lambda function (both zip and yaml).
 
-## Lambda function
+## The write-up
+For this project I have decided to use serverless (AWS lambda) solution for refreshing data. Serverless architecture becomes more and more popular and it can scale quite fast.  Views created in this project should deliver expected experience for the analytics team. Benefit of the solution with views is that there is not a delay between source table refresh and the view, additionaly we can always reach orginal data source if we want to see data witout any modification.
+
+As a final step, I would like to cover futute possible scenarios:
+
+1. The data was increased by 100x.
+In such case we would need to ensure that we can scale our Redshift (increase number of nodes or change nodes types), however Redshift will easily scale to such challenge. As we run ETL pipeline on serverless architecure it will scale-up automatically. Process can takes longer so we just need to remember to increase lambda time-out treshold.
+
+2.The pipelines would be run on a daily basis by 7 am every day.
+Our lambda function can run several times per day already. 
+
+3.The database needed to be accessed by 100+ people.
+As mentioned in the point above we would need to ensure proper scalling of the redshift. With such huge users pool we may also consider to replace views with tables (materialized datasets) so queries can run more efficient.
+
