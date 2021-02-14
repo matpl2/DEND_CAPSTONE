@@ -6,13 +6,16 @@ Purpose of this project is to build an ETL pipeline for a data that is regulary 
 
 ## Files
 This project includes following files:
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+- Data floder with datasets described below
+- pictures floder with pictures respository
+- License; licence used for this project
+
 
  
 
 
 
-## Data sets
+## Datasets
 Dataset used in this project is stored in data/set1 folder. This dataset includes 3 files:
 
 - airlines.txt
