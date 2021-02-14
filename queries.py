@@ -128,12 +128,17 @@ table_airports_truncate = (""
     TRUNCATE data.airplines;
 "")
 
+    
+# CREATING VIEWS 
 
+
+    
+    
 # QUERY LISTS
 
 queries_start = [create_schema_data, create_schema_wbr]
 queries_flight = [table_fligths_create, table_flights_truncate, table_flights_copy]
 queries_airlines = [table_fligths_create, table_flights_truncate, table_flights_copy]
+queries_airports = [table_airports_create, table_airports_truncate, table_airports_copy]
+    
 
-create_schema_data = ("""CREATE SCHEMA data;""")
-create_schema_wbr
