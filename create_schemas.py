@@ -1,10 +1,10 @@
 import configparser
 import psycopg2
-from queries import schemas_creation
+from queries import queries_start
 
 
 def create_sch(cur, conn):
-    for query in schemas_creation:
+    for query in queries_start:
         cur.execute(query)
         conn.commit()
 
