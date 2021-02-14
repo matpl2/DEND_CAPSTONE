@@ -182,6 +182,7 @@ flights_details_view = ("""
        LEFT JOIN data.airports ap1 ON fl.origin_airport = ap1.iata_code
        LEFT JOIN data.airports ap2 ON fl.destination_airport = ap2.iata_code
 )
+"")
 
 flights_delayed_agg_view = ("""
     CREATE VIEW wbr.delayed_fligths_agg  AS
@@ -264,16 +265,16 @@ flights_delayed_agg_view = ("""
         ap1.country,
         ap1.latitude,
         ap1.longitude,
-  fl.destination_airport,
-  ap2.airport,
-  ap2.city,
-  ap2.state,
-  ap2.country,
-  ap2.latitude,
-  ap2.longitude,
-  fl.diverted
+        fl.destination_airport,
+        ap2.airport,
+        ap2.city,
+        ap2.state,
+        ap2.country,
+        ap2.latitude,
+        ap2.longitude,
+        fl.diverted
  )
-
+"")
     
 # QUERY LISTS
 
@@ -281,5 +282,5 @@ queries_start = [create_schema_data, create_schema_wbr]
 queries_flight = [table_fligths_create, table_flights_truncate, table_flights_copy]
 queries_airlines = [table_fligths_create, table_flights_truncate, table_flights_copy]
 queries_airports = [table_airports_create, table_airports_truncate, table_airports_copy]
-    
+views_creation = [flights_details_view,flights_delayed_agg_view]  
 
