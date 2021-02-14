@@ -102,4 +102,4 @@ Source bucket should not allow for upload of other files.
 
 Important note: As lambda does not have psycopg module I used customized for lambda version from: https://github.com/jkehler/awslambda-psycopg2. Python 3.6 version of this psycopg is includes in lambda function (both zip and yaml).
 
-
+## Lambda function
