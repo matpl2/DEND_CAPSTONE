@@ -15,10 +15,16 @@ This project includes following files:
 - create_schemas.py; file that can create schema
 - tables_create_copy.py; file that can create tables and load data via COPY command
 - views.py; file that can create views
-- file that can execute queries to check if load process delivered data to tables
+- quality_check.py; file that can execute queries to check if load process delivered data to tables
 - my_function.yaml; lambda function that loads flights table in the yaml format
 - my_function-37febacc-743b-42ff-9d81-65d9cb6c7c42.zip; lambda function that loads flights table in the zip format
 
+Listed above files multiple purposes therefore it is needed to follow proper sequence when executing them. Following rules should be followed: 
+1) dataset should be moved to S3 buckets and these buckets should be updated in the dwh.cfg files together with Redshift credentials.
+2) Purpose of lambda funtion is to load flights data as airports and airlines does not need to be refreshed.
+3. lambda function has it's own cfg file that needs to be updated.
+3. Before runing the lambda function it is nesecarry to create schemas (create_schemas.py).
+4. Proposed order of steps are: create schemas (create_schemas.py), create and load tables (tables_create_copy.py), check if data was loaded (quality_check.py), create views (views.py) and finally set-up lambda function that will be updating flights table.
 
 
 ## Datasets
